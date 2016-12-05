@@ -12,9 +12,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OpenglES_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OpenglES_SOURCE_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OpenglES_SOURCE_DIR}/bin)
 
-#包含目录
+#包含目录(外部链接)
 include_directories(${CMAKE_SOURCE_DIR}/External/Include)
 include_directories(${CMAKE_SOURCE_DIR}/Common/Include)
+
+#包含第二章头文件
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_2/include)
 
 #添加子目录
 add_subdirectory(Common)
@@ -24,6 +27,13 @@ set(TARGET_LIB
         ${CMAKE_SOURCE_DIR}/Library/libGLESv2.lib
         ${CMAKE_SOURCE_DIR}/Library/libEGL.lib
 )
-set(SOURCE_FILES Hello_Triangle.c)
+
+#遍历第二章.cpp文件
+file(GLOB chapter2files ${CMAKE_SOURCE_DIR}/Chapter_2/*.cpp)
+add_library(chapter2 ${chapter2files})
+target_link_libraries(chapter2 Common ${TARGET_LIB})
+
+set(SOURCE_FILES main.cpp)
 add_executable(OpenglES ${SOURCE_FILES})
+#链接库文件
 target_link_libraries(OpenglES Common ${TARGET_LIB})
