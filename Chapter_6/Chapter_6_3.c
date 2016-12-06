@@ -45,6 +45,10 @@ int init (ESContext *esContext){
 
 }
 
+/**
+ * draw something
+ * @param esContext
+ */
 void Draw ( ESContext *esContext){
     UserData *userData = esContext->userData;
     GLfloat color[4] = { 0.0f, 0.0f, 1.0f, 0.0f };
@@ -57,7 +61,6 @@ void Draw ( ESContext *esContext){
             };
     //设置平截头体
     glViewport ( 0, 0, esContext->width, esContext->height );
-
     //清除颜色缓冲区
     glClear ( GL_COLOR_BUFFER_BIT );
     //使用程序项目
