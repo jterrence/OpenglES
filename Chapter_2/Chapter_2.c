@@ -1,7 +1,7 @@
 //
 // Created by jiangshipeng on 2016/12/5.
 //
-#include <HelloTriangle.h>
+#include <Chapter_2.h>
 
 GLuint LoadShader(GLenum type,const char* shaderSrc) {
     GLuint shader;
@@ -137,7 +137,7 @@ void Draw ( ESContext *esContext ){
     //启动顶点属性
     glEnableVertexAttribArray(0);
 
-    //开始画三角形
+    //开始图片装配
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
 }
