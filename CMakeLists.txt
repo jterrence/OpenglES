@@ -18,6 +18,7 @@ include_directories(${CMAKE_SOURCE_DIR}/Common/Include)
 
 #包含第二章头文件
 include_directories(${CMAKE_SOURCE_DIR}/Chapter_2/include)
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_6/include)
 
 #添加子目录后,会调用子目录下面的CMakeLists.txt文件
 add_subdirectory(Common)
@@ -30,3 +31,5 @@ set(TARGET_LIB
 
 #添加第二章节目录
 add_subdirectory(Chapter_2)
+#添加第三章目录
+add_subdirectory(Chapter_6)
