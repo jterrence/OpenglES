@@ -72,6 +72,10 @@ void Draw ( ESContext *esContext){
     glDisableVertexAttribArray (1);
 }
 
+/**
+ * 关闭窗口回调
+ * @param esContext
+ */
 void Shutdown ( ESContext *esContext){
     UserData *userData = esContext->userData;
     glDeleteProgram ( userData->programObject );
