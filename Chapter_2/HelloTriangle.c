@@ -1,19 +1,9 @@
 //
 // Created by jiangshipeng on 2016/12/5.
 //
-#include <stdlib.h>
-#include <malloc.h>
 #include <HelloTriangle.h>
 
-HelloTriangle::HelloTriangle() {
-
-}
-
-HelloTriangle::~HelloTriangle() {
-
-}
-
-GLuint HelloTriangle::LoadShader(GLenum type,const char* shaderSrc) {
+GLuint LoadShader(GLenum type,const char* shaderSrc) {
     GLuint shader;
     GLint  compiled;
 
@@ -49,17 +39,20 @@ GLuint HelloTriangle::LoadShader(GLenum type,const char* shaderSrc) {
     return shader;
 }
 
-int HelloTriangle::init(ESContext *esContext) {
+int init(ESContext *esContext) {
     UserData *userData = (UserData *) esContext->userData;
 
     //顶点着色器
     char vShaderStr[]  =
             "#version 300 es                                \n"
-            "layout(location = 0) int vec4 vPosition;       \n"
+            "layout(location = 0) in vec4 vPosition;        \n"
             "void main()                                    \n"
             "{                                              \n"
             "   gl_Position = vPosition;                    \n"
             "}                                              \n";
+
+
+
     //片元着色器
     char fShaderStr[]  =
             "#version 300 es                                \n"
@@ -120,7 +113,7 @@ int HelloTriangle::init(ESContext *esContext) {
     return TRUE;
 }
 
-void HelloTriangle::Draw ( ESContext *esContext ){
+void Draw ( ESContext *esContext ){
     UserData *userData = (UserData *)esContext->userData;
     GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f,
                              -0.5f, -0.5f, 0.0f,
@@ -134,7 +127,7 @@ void HelloTriangle::Draw ( ESContext *esContext ){
     glClear ( GL_COLOR_BUFFER_BIT );
 
     // 使用项目
-    glUseProgram ( userData->programObject );
+    glUseProgram ( userData->programObject);
 
     // 加载顶点数据
     // 每个顶点着色器中的属性都有一个唯一的无符号整数标识的位置
@@ -149,11 +142,19 @@ void HelloTriangle::Draw ( ESContext *esContext ){
 
 }
 
-void HelloTriangle::Shutdown(ESContext *esContext){
+void Shutdown(ESContext *esContext){
     UserData *userData = (UserData *)esContext->userData;
     glDeleteProgram ( userData->programObject );
 }
 
-void HelloTriangle::render() {
+int esMain (ESContext *esContext ){
 
+    esContext->userData = malloc ( sizeof ( UserData ) );
+    esCreateWindow ( esContext, "Hello Triangle", 320, 240, ES_WINDOW_RGB );
+    if ( !init( esContext ) ){
+        return GL_FALSE;
+    }
+    esRegisterShutdownFunc ( esContext, Shutdown );
+    esRegisterDrawFunc ( esContext, Draw );
+    return GL_TRUE;
 }

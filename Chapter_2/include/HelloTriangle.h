@@ -10,17 +10,31 @@
 /**
  * 第一个三角型
  */
-class HelloTriangle {
-public:
-    HelloTriangle();
-    ~HelloTriangle();
-    GLuint LoadShader(GLenum type,const char* shaderSrc);
-    int init(ESContext *esContext);
-    void Draw ( ESContext *esContext );
-    void Shutdown(ESContext *esContext);
-    void render();
-};
 
+/**
+ * 加载shader
+ * @param type
+ * @param shaderSrc
+ * @return
+ */
+GLuint LoadShader(GLenum type,const char* shaderSrc);
+/**
+ * 初始化
+ * @param esContext
+ * @return
+ */
+int init(ESContext *esContext);
+/**
+ * draw something
+ * @param esContext
+ */
+void Draw ( ESContext *esContext );
+
+/**
+ * 停止
+ * @param esContext
+ */
+void Shutdown(ESContext *esContext);
 
 typedef struct {
     GLuint programObject;

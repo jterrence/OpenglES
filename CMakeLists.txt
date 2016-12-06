@@ -19,21 +19,14 @@ include_directories(${CMAKE_SOURCE_DIR}/Common/Include)
 #包含第二章头文件
 include_directories(${CMAKE_SOURCE_DIR}/Chapter_2/include)
 
-#添加子目录
+#添加子公共目录
 add_subdirectory(Common)
+#添加第二章节目录
+add_subdirectory(Chapter_2)
 
-#设置链接库
+#设置链接库，链接库文件一定要按此顺序，否则会出现链接不成功
 set(TARGET_LIB
+        Common
         ${CMAKE_SOURCE_DIR}/Library/libGLESv2.lib
         ${CMAKE_SOURCE_DIR}/Library/libEGL.lib
 )
-
-#遍历第二章.cpp文件
-file(GLOB chapter2files ${CMAKE_SOURCE_DIR}/Chapter_2/*.cpp)
-add_library(chapter2 ${chapter2files})
-target_link_libraries(chapter2 Common ${TARGET_LIB})
-
-set(SOURCE_FILES main.cpp)
-add_executable(OpenglES ${SOURCE_FILES})
-#链接库文件
-target_link_libraries(OpenglES Common ${TARGET_LIB})
