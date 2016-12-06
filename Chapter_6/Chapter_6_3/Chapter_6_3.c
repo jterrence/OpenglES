@@ -78,19 +78,18 @@ void Draw ( ESContext *esContext){
  */
 void Shutdown ( ESContext *esContext){
     UserData *userData = esContext->userData;
-    glDeleteProgram ( userData->programObject );
+    glDeleteProgram (userData->programObject );
 }
 
-int esMain (ESContext *esContext ){
+int esMain ( ESContext *esContext ) {
     esContext->userData = malloc ( sizeof ( UserData ) );
-    //创建窗口
-    esCreateWindow ( esContext, "Example 6-3", 320, 240, ES_WINDOW_RGB );
+    esCreateWindow ( esContext, "Example 6-6", 320, 240, ES_WINDOW_RGB );
     if ( !init ( esContext ) ) {
         return GL_FALSE;
     }
-    //注册关闭窗口回调函数
+
     esRegisterShutdownFunc ( esContext, Shutdown );
-    //注册图片装配完成以后回调
     esRegisterDrawFunc ( esContext, Draw );
     return GL_TRUE;
 }
+
