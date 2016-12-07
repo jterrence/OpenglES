@@ -32,7 +32,6 @@ set(TARGET_LIB
 
 #添加第二章节目录
 add_subdirectory(Chapter_2)
-#添加第三章目录
-add_subdirectory(Chapter_6)
+#添加第六章三节目录
 add_subdirectory(Chapter_6/Chapter_6_3)
 add_subdirectory(Chapter_6/Chapter_6_6)

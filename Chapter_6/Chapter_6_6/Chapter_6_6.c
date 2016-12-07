@@ -93,6 +93,7 @@ void drawPrimitiveWithVBOs ( ESContext *esContext,
                              GLint *vtxStrides, GLint numIndices,
                              GLushort *indices ) {
     UserData *userData = esContext->userData;
+
     // vboIds[0] - used to store vertex position
     // vboIds[1] - used to store vertex color
     // vboIds[2] - used to store element indices
