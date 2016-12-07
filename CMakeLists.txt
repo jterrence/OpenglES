@@ -25,6 +25,12 @@ include_directories(${CMAKE_SOURCE_DIR}/Chapter_6/Chapter_6_6/include)
 #包含第七章头文件
 include_directories(${CMAKE_SOURCE_DIR}/Chapter_7/include)
 
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_9/Chapter_9_cubemap/include)
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_9/Chapter_9_mipMap2D/include)
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_9/Chapter_9_texture2D/include)
+include_directories(${CMAKE_SOURCE_DIR}/Chapter_9/Chapter_9_textureWrap/include)
+
+
 #添加子目录后,会调用子目录下面的CMakeLists.txt文件
 add_subdirectory(Common)
 #设置链接库，链接库文件一定要按此顺序，否则会出现链接不成功
@@ -42,3 +48,10 @@ add_subdirectory(Chapter_6/Chapter_6_3)
 add_subdirectory(Chapter_6/Chapter_6_6)
 #添加第七章目录
 add_subdirectory(Chapter_7)
+#添加第九章目录
+add_subdirectory(Chapter_9/Chapter_9_mipMap2D)
+add_subdirectory(Chapter_9/Chapter_9_cubemap)
+add_subdirectory(Chapter_9/Chapter_9_texture2D)
+add_subdirectory(Chapter_9/Chapter_9_textureWrap)
+
+add_subdirectory(Chapter_14/Noise3D)
